@@ -1,24 +1,48 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import React, { useTransition } from "react";
+import {
+  View,
+  Text,
+  // Button,
+  StyleSheet,
+  // ActivityIndicator,
+} from "react-native";
+// import { useRouter } from "expo-router";
+import { palette } from "@/helpers/palette";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+export default function LoginScreen() {
+  const [isPending, startTransition] = useTransition();
+  // const router = useRouter();
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const handleAnonymousLogin = async () => {
+    startTransition(async () => {
+      console.log("sample");
+    });
+    // router.replace("/shop");
+  };
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to PushCart</Text>
+      <Text style={styles.description}>
+        Your automated grocery shopping experience
+      </Text>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    padding: 20,
+    paddingTop: 100,
+    backgroundColor: "#fff",
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: "bold",
+    marginBottom: 20,
+    color: palette.primary,
+  },
+  description: { fontSize: 20, fontWeight: "400", opacity: 0.5 },
+});

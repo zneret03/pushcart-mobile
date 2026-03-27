@@ -13,25 +13,11 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="LoginScreen"
         options={{
-          title: "Home",
+          title: "Login",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="cart" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="ProductsScreen"
-        options={{
-          headerShown: true,
-          title: "Products",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol
-              size={28}
-              name="filemenu.and.cursorarrow"
-              color={color}
-            />
           ),
         }}
       />
